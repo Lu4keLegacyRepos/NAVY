@@ -1,18 +1,31 @@
-﻿using Perceptron.Interfaces;
+﻿using Perceptron.Enums;
+using Perceptron.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Perceptron.DataSet
 {
     public class DataSetFactory
     {
 
-        public IDataSet CreateTrainingSet(double[] input, double output)
+        public List<TestSet> CreateTestSet()
         {
-            return new TrainingSet() { Input = input, Output = output };
+            return Generator.GenerateTestSet(100);
         }
 
-        public IDataSet CreateTestSet(double[] input)
+        private List<TrainingSet> CreateTrainingSet()
         {
-            return new TrainingSet() { Input = input };
+            return Generator.GenerateTrainSet(50, (data) => Math.Sign(4 * data.x - data.y - 5));
         }
+
+
+        public List<IDataSet> Create(DataSetType type) => type switch
+        {
+            DataSetType.TestSet => CreateTestSet().ToList<IDataSet>(),
+            DataSetType.TrainingSet => CreateTrainingSet().ToList<IDataSet>(),
+            _ => throw new Exception("WTF")
+        };
+
     }
 }

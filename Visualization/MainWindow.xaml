@@ -7,13 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="600">
     <Grid>
-        <Canvas Width="500" Height="500" x:Name="canvas" Background="AliceBlue" RenderTransformOrigin="0,1"  >
-            <Canvas.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1" />
-                    <TranslateTransform Y="-500"/>
-                </TransformGroup>
-            </Canvas.RenderTransform>
-        </Canvas>
+        <Border x:Name="border" Background="AliceBlue" Height="500" Width="500" MouseDown="border_MouseDown">
+            <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" 
+                      Width="0" Height="0"
+                      RenderTransform="1 0 0 -1 0 0"
+                    x:Name="canvas">
+
+            </Canvas>
+        </Border>
+        <Label x:Name="EpochLabel" Content="Label" HorizontalAlignment="Left" Margin="186,6,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.04,0.329"/>
+        <Button x:Name="TestButton" Content="Random Test" HorizontalAlignment="Left" Margin="478,9,0,0" VerticalAlignment="Top" Click="TestButton_Click"/>
+        <Button x:Name="TrainButton" Content="New Train Data" HorizontalAlignment="Left" Margin="50,9,0,0" VerticalAlignment="Top" Click="TrainButton_Click"/>
     </Grid>
 </Window>

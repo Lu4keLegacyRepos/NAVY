@@ -12,7 +12,7 @@ namespace Perceptron.DataSet
         /// </summary>
         /// <param name="numOfItems"></param>
         /// <returns></returns>
-        public static List<TrainingSet> GenerateTrainSet(int numOfItems, Func<double[], int> activationFunc, int coordLimit = 500)
+        public static List<TrainingSet> GenerateTrainSet(int numOfItems, Func<(double x, double y), int> lineFunction, int coordLimit = 500)
         {
             var rnd = new Random();
 
@@ -21,19 +21,18 @@ namespace Perceptron.DataSet
             {
                 var input = new double[]
                     {
-                        (double)rnd.Next(coordLimit),
-                        (double)rnd.Next(coordLimit)
+                        (double)rnd.Next(-coordLimit/2,coordLimit/2),
+                        (double)rnd.Next(-coordLimit/2,coordLimit/2)
                     };
                 rtn.Add(new TrainingSet()
                 {
                     Input = input,
-                    Output = activationFunc(input)
+                    Output = lineFunction((input[0],input[1]))
                 });
             }
             return rtn;
         }
 
-        private int activateFunc(double[] x) => switch
 
 
         public static List<TestSet> GenerateTestSet(int numOfItems, int coordLimit = 500)
@@ -45,8 +44,8 @@ namespace Perceptron.DataSet
             {
                 var input = new double[]
                     {
-                        (double)rnd.Next(coordLimit),
-                        (double)rnd.Next(coordLimit)
+                        (double)rnd.Next(-coordLimit/2,coordLimit/2),
+                        (double)rnd.Next(-coordLimit/2,coordLimit/2)
                     };
                 rtn.Add(new TestSet()
                 {
