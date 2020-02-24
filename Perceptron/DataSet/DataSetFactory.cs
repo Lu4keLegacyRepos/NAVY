@@ -14,16 +14,16 @@ namespace Perceptron.DataSet
             return Generator.GenerateTestSet(100);
         }
 
-        private List<TrainingSet> CreateTrainingSet()
+        private List<TrainingSet> CreateTrainingSet(LineEq lineEq)
         {
-            return Generator.GenerateTrainSet(50, (data) => Math.Sign(4 * data.x - data.y - 5));
+            return Generator.GenerateTrainSet(50, (data) => Math.Sign(lineEq.GetLineEqToZero(data.x, data.y)));
         }
 
 
-        public List<IDataSet> Create(DataSetType type) => type switch
+        public List<IDataSet> Create(DataSetType type, LineEq lineEq=null) => type switch
         {
             DataSetType.TestSet => CreateTestSet().ToList<IDataSet>(),
-            DataSetType.TrainingSet => CreateTrainingSet().ToList<IDataSet>(),
+            DataSetType.TrainingSet => CreateTrainingSet(lineEq).ToList<IDataSet>(),
             _ => throw new Exception("WTF")
         };
 

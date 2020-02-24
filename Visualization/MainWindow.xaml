@@ -5,18 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Visualization"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600">
-    <Grid>
+        Title="MainWindow" Height="700" Width="630">
+    <Grid Height="700" Width="600">
         <Border x:Name="border" Background="AliceBlue" Height="500" Width="500" MouseDown="border_MouseDown">
             <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" 
                       Width="0" Height="0"
                       RenderTransform="1 0 0 -1 0 0"
                     x:Name="canvas">
+                <!--<Line X1="0" Y1="0" X2="250" Y2="0" StrokeThickness="5" Stroke="Green"/>-->
+
+
+                <Line X1="-0" Y1="-250" X2="-0" Y2="250" StrokeThickness="0.5" Stroke="DarkGoldenrod"/>
+                <Line X1="250" Y1="0" X2="-250" Y2="0" StrokeThickness="0.5" Stroke="DarkGoldenrod"/>
+
+                <TextBlock Text="[-250,0]" Canvas.Left="-299" RenderTransformOrigin="0.5,0.5" Canvas.Top="-3">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock Foreground="Black" Text="[250,0]" Canvas.Left="255" RenderTransformOrigin="0.5,0.5" Canvas.Top="-6">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock Text="[0,250]" Canvas.Left="-20" RenderTransformOrigin="0.5,0.5" Canvas.Top="265">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock Text="[0,-250]" Canvas.Left="-20" RenderTransformOrigin="0.5,0.5" Canvas.Top="-280">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
 
             </Canvas>
+
         </Border>
-        <Label x:Name="EpochLabel" Content="Label" HorizontalAlignment="Left" Margin="186,6,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.04,0.329"/>
-        <Button x:Name="TestButton" Content="Random Test" HorizontalAlignment="Left" Margin="478,9,0,0" VerticalAlignment="Top" Click="TestButton_Click"/>
-        <Button x:Name="TrainButton" Content="New Train Data" HorizontalAlignment="Left" Margin="50,9,0,0" VerticalAlignment="Top" Click="TrainButton_Click"/>
+        <Label x:Name="EpochLabel" Content="Label" HorizontalAlignment="Left" Margin="50,-2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.04,0.329"/>
+        <Button x:Name="TestButton" Content="Random Test" HorizontalAlignment="Left" Margin="478,6,0,0" VerticalAlignment="Top" Click="TestButton_Click"/>
+        <Button x:Name="TrainButton" Content="New Train Data" HorizontalAlignment="Left" Margin="466,31,0,0" VerticalAlignment="Top" Click="TrainButton_Click"/>
+        <Label Content="Weight 1 :" HorizontalAlignment="Left" Margin="50,16,0,0" VerticalAlignment="Top"></Label>
+        <Label Content="Weight 2 :" HorizontalAlignment="Left" Margin="50,33,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.987,0.637"></Label>
+        <Label Content="Bias         :" HorizontalAlignment="Left" Margin="50,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.2,0.502"></Label>
+        <!--<Label Content="Error        :" HorizontalAlignment="Left" Margin="50,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.166,0.592"/>-->
+
+        <Label x:Name="W1" Content="W1" HorizontalAlignment="Left" Margin="110,16,0,0" VerticalAlignment="Top"></Label>
+        <Label x:Name="W2" Content="W2" HorizontalAlignment="Left" Margin="110,33,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.987,0.637"></Label>
+        <Label x:Name="b" Content="W3" HorizontalAlignment="Left" Margin="110,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.193,0.233"></Label>
+        <!--<Label x:Name="Error" Content="W4" HorizontalAlignment="Left" Margin="110,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.193,0.233"></Label>-->
+
+        <Label x:Name="lineLabel" Content="Label" HorizontalAlignment="Left" Margin="243,-2,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Train100Button" Content="Train 100x" HorizontalAlignment="Left" Margin="493,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.219,0.019" Click="Train100Button_Click"/>
     </Grid>
 </Window>

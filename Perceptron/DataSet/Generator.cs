@@ -1,14 +1,12 @@
-﻿using Perceptron.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Perceptron.DataSet
 {
     public static class Generator
     {
         /// <summary>
-        /// generate set of 2D points for  y = 4x - 5
+        /// generate set of 2D points 
         /// </summary>
         /// <param name="numOfItems"></param>
         /// <returns></returns>
@@ -27,7 +25,7 @@ namespace Perceptron.DataSet
                 rtn.Add(new TrainingSet()
                 {
                     Input = input,
-                    Output = lineFunction((input[0],input[1]))
+                    Output = lineFunction((input[0], input[1]))
                 });
             }
             return rtn;

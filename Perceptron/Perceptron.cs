@@ -3,25 +3,23 @@ using Perceptron.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace Perceptron
 {
     public class Perceptron
     {
+        public LineEq LineEquations { get;private set; }
         public double[] Weights { get; set; }
         public double Bias { get; set; }
-        public Func<double[], int> ActivationFunc { get; set; }
+        public Func<double, int> ActivationFunc { get; set; }
         public string Id { get; private set; }
         public double LearningRate { get; private set; }
-
+        public double Error { get; private set; }
 
         private List<IDataSet> trainData = null;
-        private (int Actual, int Max) NumOfEpoch = (0,0);
+        private (int Actual, int Max) NumOfEpoch = (0, 0);
 
-        public Perceptron(int numOfInputs, double learningConstant = 0.001)
+        public Perceptron(int numOfInputs, Func<double, int> activationFunc, double learningConstant = 0.001)
         {
             var rnd = new Random();
             LearningRate = learningConstant;
@@ -32,8 +30,22 @@ namespace Perceptron
                 Weights[i] = rnd.NextDouble();
             }
             Id = Guid.NewGuid().ToString();
+            ActivationFunc = activationFunc;
+            LineEquations = new LineEq();
         }
 
+        public Perceptron(int numOfInputs) : this(numOfInputs, Math.Sign)
+        {
+
+        }
+        public Perceptron(int numOfInputs, LineEq lineEq) : this(numOfInputs, Math.Sign)
+        {
+            LineEquations = lineEq;
+        }
+        public Perceptron(int numOfInputs, double learningConstant = 0.001) : this(numOfInputs, Math.Sign, learningConstant)
+        {
+
+        }
 
         public double Guess(double[] input)
         {
@@ -43,7 +55,7 @@ namespace Perceptron
                 sum += input[i] * Weights[i];
             }
 
-            return Math.Sign(sum);
+            return ActivationFunc(sum);
         }
 
         public void Train(int numOfEpoch, List<IDataSet> trainData)
@@ -54,31 +66,30 @@ namespace Perceptron
                 {
                     var output = Guess(data.Input);
                     var error = data.Output - output;
-                    var index = trainData.IndexOf(data);
                     UpdateWeight((0, data.Input[0], error));
                     UpdateWeight((1, data.Input[1], error));
+                    UpdateBias(error);
+                    Error = error;
                 }
             }
         }
 
-        public void SetTrainData(int numOfEpoch, List<IDataSet> trainData)
+        public void SetTrainData(List<IDataSet> trainData)
         {
             this.trainData = trainData;
-            this.NumOfEpoch = (0, numOfEpoch);
+            this.NumOfEpoch = (0, 0);
         }
 
         public List<IDataSet> TrainStep()
         {
-            if (NumOfEpoch.Actual > NumOfEpoch.Max)
-            {
-                return null;
-            }
             foreach (TrainingSet data in trainData)
             {
                 var output = Guess(data.Input);
-                var error = data.Output - output;
+                double error = data.Output - output;
                 UpdateWeight((0, data.Input[0], error));
                 UpdateWeight((1, data.Input[1], error));
+                UpdateBias(error);
+                Error = error;
             }
             NumOfEpoch.Actual++;
             return trainData;
@@ -86,6 +97,8 @@ namespace Perceptron
 
         private void UpdateWeight((int index, double input, double error) data)
         => Weights[data.index] = Weights[data.index] + data.error * data.input * LearningRate;
+
+        private void UpdateBias(double error) => Bias = Bias + error * LearningRate;
 
     }
 }
