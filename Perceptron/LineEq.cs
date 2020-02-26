@@ -2,12 +2,9 @@
 {
     public class LineEq
     {
-        public double a { get; set; } = 4;
-        public double b { get; set; } = -5;
+        public double GetY((double x, double bias, double wx, double wy) data) => (-data.wx * data.x - data.bias) / data.wy;
+        public double GetX((double y, double bias, double wx, double wy) data) => (-data.wy * data.y - data.bias) / data.wx;
 
-        public double GetY(double x) => a * x + b;
-        public double GetX(double y) => y / a - b / a;
-
-        public double GetLineEqToZero(double x, double y) => a * x + b - y;
+        public double GetLineEqToZero((double x, double y, double bias, double wx, double wy) data) => data.wx * data.x + data.wy * data.y + data.bias;
     }
 }
