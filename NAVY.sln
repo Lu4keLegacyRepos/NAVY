@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Visualization", "Visualizat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Perceptron", "Perceptron\Perceptron.csproj", "{B732947F-6B65-403A-B503-39ED6222AB95}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CV3", "CV3", "{B3996829-DEF7-470F-A3BF-6D0AC1DB0208}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetwork", "NNLayer\NeuralNetwork.csproj", "{B0061333-CF34-4CAB-B04E-A46BCBF1DDE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,10 @@ Global
 		{B732947F-6B65-403A-B503-39ED6222AB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B732947F-6B65-403A-B503-39ED6222AB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B732947F-6B65-403A-B503-39ED6222AB95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0061333-CF34-4CAB-B04E-A46BCBF1DDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0061333-CF34-4CAB-B04E-A46BCBF1DDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0061333-CF34-4CAB-B04E-A46BCBF1DDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0061333-CF34-4CAB-B04E-A46BCBF1DDE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{891B3A9F-CFFD-4862-8470-B69EE8638C19} = {AF44538E-BA1B-4AB1-9ABD-3A49369343D7}
 		{B732947F-6B65-403A-B503-39ED6222AB95} = {AF44538E-BA1B-4AB1-9ABD-3A49369343D7}
+		{B0061333-CF34-4CAB-B04E-A46BCBF1DDE7} = {B3996829-DEF7-470F-A3BF-6D0AC1DB0208}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64575FFD-B42E-4184-9D1E-5AF36C924369}
