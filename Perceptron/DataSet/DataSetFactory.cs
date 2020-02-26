@@ -16,7 +16,7 @@ namespace Perceptron.DataSet
 
         private List<TrainingSet> CreateTrainingSet(LineEq lineEq)
         {
-            return Generator.GenerateTrainSet(50, (data) => Math.Sign(lineEq.GetLineEqToZero(data.x, data.y)));
+            return Generator.GenerateTrainSet(500, (data) => Math.Sign(lineEq.GetLineEqToZero(data.x, data.y)));
         }
 
 

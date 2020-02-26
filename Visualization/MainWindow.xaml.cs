@@ -35,7 +35,6 @@ namespace Visualization
             W1.Content = p.Weights[0];
             W2.Content = p.Weights[1];
             b.Content = p.Bias;
-            //  Error.Content = p.Error;
 
             defaultCanvas = new UIElement[canvas.Children.Count];
             canvas.Children.CopyTo(defaultCanvas, 0);
