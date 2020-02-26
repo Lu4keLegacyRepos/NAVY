@@ -29,7 +29,7 @@ namespace Visualization
             InitializeComponent();
             p = new Perceptron.Perceptron(2);
             EpochLabel.Content = $"Training epocha: {ElapsedEpoch}";
-            lineLabel.Content = $"Line: y={p.LineEquations.a}x+({p.LineEquations.b})";
+            lineLabel.Content = $"Line: {p.LineEquations.ToString((p.Bias, p.Weights[0], p.Weights[1]))}";
             SetTrainData();
 
             W1.Content = p.Weights[0];
@@ -55,9 +55,9 @@ namespace Visualization
                 DrawPoint((point.Input[0], point.Input[1], OutputConvertor((int)p.Guess(point.Input))));
             }
 
-            var tmpStartX = p.LineEquations.GetX(-250);
-            var tmpEndX = p.LineEquations.GetX(250);
-            DrawLine((tmpStartX, p.LineEquations.GetY(tmpStartX)), (tmpEndX, p.LineEquations.GetY(tmpEndX)));
+            var tmpStartX = p.LineEquations.GetX((-250,p.Bias, p.Weights[0], p.Weights[1]));
+            var tmpEndX = p.LineEquations.GetX((250, p.Bias, p.Weights[0], p.Weights[1]));
+            DrawLine((tmpStartX, p.LineEquations.GetY((tmpStartX, p.Bias, p.Weights[0], p.Weights[1]))), (tmpEndX, p.LineEquations.GetY((tmpEndX, p.Bias, p.Weights[0], p.Weights[1]))));
         }
 
         private void VisualizeTraining()
@@ -71,9 +71,10 @@ namespace Visualization
                     DrawPoint((point.Input[0], point.Input[1], OutputConvertor((int)p.Guess(point.Input))));
                 }
             }
-            var tmpStartX = p.LineEquations.GetX(-250);
-            var tmpEndX = p.LineEquations.GetX(250);
-            DrawLine((tmpStartX, p.LineEquations.GetY(tmpStartX)), (tmpEndX, p.LineEquations.GetY(tmpEndX)));
+            var tmpStartX = p.LineEquations.GetX((-250, p.Bias, p.Weights[0], p.Weights[1]));
+            var tmpEndX = p.LineEquations.GetX((250, p.Bias, p.Weights[0], p.Weights[1]));
+            DrawLine((tmpStartX, p.LineEquations.GetY((tmpStartX, p.Bias, p.Weights[0], p.Weights[1]))), (tmpEndX, p.LineEquations.GetY((tmpEndX, p.Bias, p.Weights[0], p.Weights[1]))));
+
             p.TrainStep();
         }
 
@@ -126,6 +127,7 @@ namespace Visualization
         {
             VisualizeTraining();
             EpochLabel.Content = $"Training epocha: {++ElapsedEpoch}";
+            lineLabel.Content = $"Line: {p.LineEquations.ToString((p.Bias, p.Weights[0], p.Weights[1]))}";
             W1.Content = p.Weights[0];
             W2.Content = p.Weights[1];
             b.Content = p.Bias;
@@ -145,6 +147,7 @@ namespace Visualization
             SetTrainData();
             VisualizeTraining();
             EpochLabel.Content = $"Training epocha: {++ElapsedEpoch}";
+            lineLabel.Content = $"Line: {p.LineEquations.ToString((p.Bias, p.Weights[0], p.Weights[1]))}";
 
         }
 
@@ -154,6 +157,7 @@ namespace Visualization
             VisualizeTraining();
             ElapsedEpoch += 100;
             EpochLabel.Content = $"Training epocha: {ElapsedEpoch}";
+            lineLabel.Content = $"Line: {p.LineEquations.ToString((p.Bias, p.Weights[0], p.Weights[1]))}";
             W1.Content = p.Weights[0];
             W2.Content = p.Weights[1];
             b.Content = p.Bias;
