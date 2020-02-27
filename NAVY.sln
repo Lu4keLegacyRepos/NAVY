@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Perceptron", "Perceptron\Pe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CV3", "CV3", "{B3996829-DEF7-470F-A3BF-6D0AC1DB0208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetwork", "NNLayer\NeuralNetwork.csproj", "{B0061333-CF34-4CAB-B04E-A46BCBF1DDE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralNetwork", "NNLayer\NeuralNetwork.csproj", "{B0061333-CF34-4CAB-B04E-A46BCBF1DDE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cheat", "cheat", "{BB05C489-3498-4695-A44D-D368B2A6CB4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
