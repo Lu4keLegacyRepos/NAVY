@@ -14,7 +14,7 @@ namespace Perceptron
         public Func<double, int> ActivationFunc { get; set; }
         public string Id { get; private set; }
         public double LearningRate { get; private set; }
-        public double Error { get; private set; }
+        public double Error { get; set; }
 
         private List<IDataSet> trainData = null;
         private (int Actual, int Max) NumOfEpoch = (0, 0);

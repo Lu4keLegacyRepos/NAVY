@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Test
+namespace TestNN
 {
     class Program
     {
@@ -26,15 +26,16 @@ namespace Test
             for (int i = 0; i < 200000; i++)
             {
                 var trainSet = dataSet[r.Next(dataSet.Count)];
-                nn.Train(trainSet.Item1, trainSet.Item2,0.2);
+                nn.Train(trainSet.Item1, trainSet.Item2, 0.2);
             }
             Console.WriteLine("Training Complete");
 
 
             nn.Predict(new double[] { 0, 0 }).Print();
             nn.Predict(new double[] { 0, 1 }).Print();
-            nn.Predict(new double[] { 1, 1 }).Print();
             nn.Predict(new double[] { 1, 0 }).Print();
+            nn.Predict(new double[] { 1, 1 }).Print();
+
             Console.ReadKey();
         }
     }
