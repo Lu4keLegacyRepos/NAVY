@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HopfieldNetwork", "Hopfield
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{55F96735-9F0C-4899-8A15-F70F6541ADA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWpfApp", "TestWpfApp\TestWpfApp.csproj", "{D7F30355-670C-4841-A851-753B64BF507C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWpfApp", "TestWpfApp\TestWpfApp.csproj", "{D7F30355-670C-4841-A851-753B64BF507C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CV5", "CV5", "{733CCDFA-90E6-44D6-9952-026EE8A41785}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -22,7 +22,7 @@ namespace TestWpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int dim = 2;
+        private int dim = 30;
         private double[,] image;
         private Network network;
 
