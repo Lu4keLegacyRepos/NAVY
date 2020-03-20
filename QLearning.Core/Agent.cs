@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace QLearning.Core
 {
+    /// <summary>
+    /// entita vyuzivající metodiku Q-learningu
+    /// </summary>
     public class Agent
     {
         private readonly Enviroment env;
@@ -28,7 +31,9 @@ namespace QLearning.Core
             }
             RandomAgentState();
         }
-
+        /// <summary>
+        /// nastaveni herniho pole a Q matice
+        /// </summary>
         public void RandomAgentState()
         {
             foreach (var q in Q.Keys.Where(k => k.Active))
@@ -40,6 +45,11 @@ namespace QLearning.Core
             ActualState = Q.Where(x => x.Key.Type == StateType.Clean).ToList()[random.Next(cntQClean)].Key;
             ActualState.Active = true;
         }
+
+        /// <summary>
+        /// vygenerovani listu akci pro stavy 
+        /// </summary>
+        /// <returns></returns>
         private List<QAction> InitActions()
         {
             var rtn = new List<QAction>();
@@ -64,6 +74,12 @@ namespace QLearning.Core
             }
             return console;
         }
+
+        /// <summary>
+        /// pohyb agenta s poctem episod Q-learningu
+        /// </summary>
+        /// <param name="episodesCnt"></param>
+        /// <returns></returns>
         public int AutoMove(int episodesCnt = 1)
         {
             int cnt = 0;
@@ -80,6 +96,9 @@ namespace QLearning.Core
             return cnt;
         }
 
+        /// <summary>
+        /// jedna zmen stavu agenta s sanci na exploraci
+        /// </summary>
         public void MakeMove()
         {
             QState nextState;
@@ -102,6 +121,10 @@ namespace QLearning.Core
             Learn(nextState);
         }
 
+        /// <summary>
+        ///  Q-learn na zaklade prechodu stavu
+        /// </summary>
+        /// <param name="nextState"></param>
         private void Learn(QState nextState)
         {
             if (!Q.ContainsKey(nextState))

@@ -27,6 +27,10 @@ namespace QLearning.Visualize
         private Agent agent;
         int cnt = 0;
         int cnt_auto = 0;
+
+        /// <summary>
+        /// Inicializace prostredi
+        /// </summary>
         public MainWindow()
         {
             worker = new BackgroundWorker();
@@ -56,7 +60,11 @@ namespace QLearning.Visualize
            
 
         }
-
+        /// <summary>
+        /// Update prostredi po akci agenta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Worker_auto_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             counter.Content = cnt_auto;
@@ -116,12 +124,7 @@ namespace QLearning.Visualize
                         Height = 30,
                         MaxHeight = 30,
                         MaxWidth = 30,
-                        //Fill = ((State)game.Enviroment.States.First(d => ((State)d).Coordinations.X == x && ((State)d).Coordinations.Y == y)).Type switch
-                        //{
-                        //    StateType.Obstacle => Brushes.Black,
-                        //    StateType.Clean => Brushes.White,
-                        //    _ => Brushes.Yellow
-                        //},
+
                         Stroke = Brushes.Black,
                         Uid = $"{x};{y}",
                     };

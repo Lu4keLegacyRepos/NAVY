@@ -5,6 +5,9 @@ using System.Windows.Media;
 
 namespace QLearning.Core
 {
+    /// <summary>
+    /// Q-learning entita znazornujici prostredu pro uceni
+    /// </summary>
     public class Enviroment
     {
         private readonly int dimension;
@@ -52,7 +55,13 @@ namespace QLearning.Core
             }
             return rtn;
         }
-
+        /// <summary>
+        /// Generovani prostredi na zaklade velikosti herni plochy, prekazek a pozice cile (cheese)
+        /// </summary>
+        /// <param name="numOfRows"></param>
+        /// <param name="numOfCols"></param>
+        /// <param name="obstacles"></param>
+        /// <param name="cheese"></param>
         private void GenerateEnvFor(int numOfRows, int numOfCols, IList<(int X, int Y)> obstacles, (int X, int Y) cheese)
         {
             int stateIndex = 0;
@@ -80,6 +89,15 @@ namespace QLearning.Core
             }
 
         }
+
+        /// <summary>
+        /// pomocna fce pro ziskani sousednich poli
+        /// </summary>
+        /// <param name="stateQueue"></param>
+        /// <param name="state"></param>
+        /// <param name="numOfRows"></param>
+        /// <param name="numOfCols"></param>
+        /// <returns></returns>
         private List<QState> GetNeightbors(List<QState> stateQueue, QState state, int numOfRows, int numOfCols)
         {
             var tmpCoord = new List<(int X, int Y)>()

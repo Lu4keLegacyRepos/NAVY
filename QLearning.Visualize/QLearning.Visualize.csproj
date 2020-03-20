@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QLearning.Core\QLearning.Core.csproj" />
-    <ProjectReference Include="..\QLearning.Game\QLearning.Game.csproj" />
     <ProjectReference Include="..\QLearning\QLearning.csproj" />
   </ItemGroup>
 
