@@ -31,7 +31,6 @@ namespace Pole.Visualize
         public MainWindow()
         {
             InitializeComponent();
-            //cp = new CartPole(Cart, Pole,1,-10);
             cp = new CartPole(canvas);
             enviroment = new Enviroment(8);
             agent = new Agent(enviroment, (-3, 3), (-15, 15));
