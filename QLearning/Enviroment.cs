@@ -1,9 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace QLearning
+namespace QLearning.Core
 {
     public class Enviroment
     {
-        public int Dimension { get;private set; }
+        /// <summary>
+        /// R matrix
+        /// </summary>
+        public List<IState> States { get; set; }
+
+        public Enviroment()
+        {
+            States = new List<IState>();
+        }
+
+
+
+
     }
 }

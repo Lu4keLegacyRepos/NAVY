@@ -10,6 +10,11 @@
         <Canvas Margin="205,0,0,0" x:Name="canvas">
 
         </Canvas>
+        <Label Content="Steps: " HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="counter" Content="0" HorizontalAlignment="Left" Margin="59,58,0,0" VerticalAlignment="Top"/>
+        <Button Content="Move" HorizontalAlignment="Left" Margin="15,131,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="ResetMouse" HorizontalAlignment="Left" Margin="15,183,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="Auto Move" HorizontalAlignment="Left" Margin="15,156,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
 
     </Grid>
 </Window>
