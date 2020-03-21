@@ -10,10 +10,10 @@
 
   <ItemGroup>
     <Reference Include="PresentationCore">
-      <HintPath>C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationCore.dll</HintPath>
+      <HintPath>..\Libs\PresentationCore.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework">
-      <HintPath>C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationFramework.dll</HintPath>
+      <HintPath>..\Libs\PresentationFramework.dll</HintPath>
     </Reference>
   </ItemGroup>
 
