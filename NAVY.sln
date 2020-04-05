@@ -7,6 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CV7", "CV7", "{573C6C65-1EC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LSystem.Visualize", "LSystem.Visualize\LSystem.Visualize.csproj", "{B8195309-F6EE-4924-B434-502CD0AE22E3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BED55B02-9309-4BC4-B3EC-8ABBA2627938}"
+	ProjectSection(SolutionItems) = preProject
+		publish\LSystem.Visualize.deps.json = publish\LSystem.Visualize.deps.json
+		publish\LSystem.Visualize.dll = publish\LSystem.Visualize.dll
+		publish\LSystem.Visualize.exe = publish\LSystem.Visualize.exe
+		publish\LSystem.Visualize.pdb = publish\LSystem.Visualize.pdb
+		publish\LSystem.Visualize.runtimeconfig.json = publish\LSystem.Visualize.runtimeconfig.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
