@@ -13,7 +13,10 @@ namespace Pole.QLearning
         private readonly (double minDegree, double maxDegree) degreeRange;
         private readonly double learningRate;
         private readonly double exploreRate;
-        public ConcurrentDictionary<QState, List<QAction>> Q { get; private set; }
+        /// <summary>
+        /// Index of State -> Qvalue [0-> left   1-> right];
+        /// </summary>
+        public ConcurrentDictionary<int, List<double>> Q { get; private set; }
         private Random random;
 
         public Agent(Enviroment env,(double minX, double maxX) xRange, (double minDegree, double maxDegree) degreeRange, double learningRate = .9, double exploreRate = .1)
@@ -24,15 +27,12 @@ namespace Pole.QLearning
             this.xRange = xRange;
             this.degreeRange = degreeRange;
             random = new Random();
-            Q = env.R;
+            Q = new ConcurrentDictionary<int, List<double>>();
 
             // init Q to zeros
-            foreach (var state in Q)
+            foreach (var state in env.R.Keys)
             {
-                foreach (var action in state.Value)
-                {
-                    action.Qvalue = 0;
-                }
+                Q.TryAdd(state.Index, new List<double>() { 0, 0 });
             }
 
         }
@@ -43,11 +43,12 @@ namespace Pole.QLearning
         /// <param name="actualAngle"></param>
         /// <param name="withLearn"></param>
         /// <returns></returns>
-        public bool MakeMove(double actualX, double actualAngle, bool lastMove,bool withLearn=true)
+        public bool MakeMove(double actualX, double actualAngle, bool betterAngle,bool withLearn=true)
         {
             var inRange = actualX < xRange.maxX && actualX > xRange.minX;
             var inAngle = actualAngle < degreeRange.maxDegree && actualAngle > degreeRange.minDegree;
-            var actualState = Q.First(s => s.Key.InAngleRange == inAngle && s.Key.InRange == inRange && s.Key.Direction==lastMove);
+
+            var actualState = Q.First(s => s.Key.InAngleRange == inAngle && s.Key.InRange == inRange && s.Key.BetterAngle==betterAngle);
             QState nextState;
             // Exploration
             if (random.NextDouble() < exploreRate)
@@ -66,7 +67,7 @@ namespace Pole.QLearning
                 Learn(actualState, nextState);
             }
 
-            return nextState.Direction;
+            return nextState.BetterAngle;
             
         }
 

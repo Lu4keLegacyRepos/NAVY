@@ -3,8 +3,8 @@
     public class QAction : QState
     {
         
-        public QAction(int index, bool inRange, bool inAngleRange, bool direction)
-            : base(index, inRange, inAngleRange, direction)
+        public QAction(int index, bool inRange, bool inAngleRange, bool betterAngle)
+            : base(index, inRange, inAngleRange, betterAngle)
         {
         }
 

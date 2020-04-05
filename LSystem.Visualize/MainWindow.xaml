@@ -8,11 +8,13 @@
         Title="MainWindow" Height="900" Width="1100">
     <Grid>
 
-                <Canvas x:Name="canvas" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="132,0,0,0" Width="900" Height="800">
-                </Canvas>
+        <Canvas x:Name="canvas" Margin="48,145,-110,-58"/>
 
-        <Button x:Name="btnDraw" Content="Button" HorizontalAlignment="Left" Margin="26,82,0,0" VerticalAlignment="Top" Click="btnDraw_Click"/>
-    
+        <Button x:Name="btnDraw1" Content="1. Axiom: F+F+F+F   Rule: F -> F+F-F-FF+F+F-F   Angle: 90°" HorizontalAlignment="Center" Margin="0,14,0,0" VerticalAlignment="Top" Click="btnDraw_Click" Height="23" Width="1046"/>
+        <Button x:Name="btnDraw2" Content="2. Axiom: F++F++F   Rule: F -> F+F--F+F   Angle: 60°" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Click="btnDraw2_Click" Height="23" Width="1046"/>
+        <Button x:Name="btnDraw3" Content="3. Axiom: F   Rule: F -> F[+F]F[-F]F   Angle: pi/7" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Click="btnDraw3_Click" Height="23" Width="1046"/>
+        <Button x:Name="btnDraw4" Content="4. Axiom: F   Rule: F -> FF+[+F-F-F]-[-F+F+F]   Angle: pi/8" HorizontalAlignment="Center" Margin="0,98,0,0" VerticalAlignment="Top" Click="btnDraw4_Click" Height="23" Width="1046"/>
+
 
     </Grid>
 </Window>

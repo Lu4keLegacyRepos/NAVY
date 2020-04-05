@@ -17,6 +17,8 @@ namespace Pole.Visualize
         private Canvas canvas;
 
         public double PoleAngle { get; private set; } // in degree
+        public double PoleAnglePrev { get; private set; } // in degree
+        public bool IsBetterAngle => Math.Abs(0 - PoleAngle) < Math.Abs(0 - PoleAnglePrev); //mensi uhel nez predchozi krok ?
         public double CartX { get; private set; }
         public bool LastMove { get;private set; }
 
@@ -72,6 +74,7 @@ namespace Pole.Visualize
         }
         public void Move(bool? right)
         {
+            PoleAnglePrev = PoleAngle;
             PoleAngle += right switch
             {
                 true => -1 * Math.Atan(Math.Tan(cartStep / poleLength)),

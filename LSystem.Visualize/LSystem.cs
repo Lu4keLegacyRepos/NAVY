@@ -17,16 +17,7 @@ namespace LSystem.Visualize
         public List<LPoint> points = new List<LPoint>();
         LPoint currentPoint;
 
-
-        private int probabilityToChangeLength = 10;
-        private int minStepLength = 5;
-        private int maxStepLength = 15;
-
-        private int probabilityToChangeAngle = 10;
-        private int minAngleStep = 90;
-        private int maxAngleStep = 90;
-
-        public LSystem(Point startPoint, int step, int angleStep)
+        public LSystem(Point startPoint, int step, float angleStep)
         {
             grammar = new Dictionary<char, Action>()
             {
@@ -44,41 +35,16 @@ namespace LSystem.Visualize
             AngleStep = (float)Math.PI / 180 * angleStep;
         }
 
-
-        private void ChangeLength()
-        {
-            Random n = new Random();
-
-            if (n.Next(probabilityToChangeLength) % 10 == 0 || Step == 0)
-            {
-                Step = n.Next(minStepLength, maxStepLength + 1);
-            }
-        }
-
-        private void ChangeAngleStep()
-        {
-            Random n = new Random();
-
-            if (n.Next(probabilityToChangeAngle) % 10 == 0 || AngleStep == 0)
-            {
-                AngleStep = (float)(n.Next((int)minAngleStep, (int)maxAngleStep + 1) * Math.PI / 180);
-            }
-        }
         private void AddPoint()
         {
             points.Add(currentPoint);
         }
         private void Forward()
         {
-          //  ChangeAngleStep();
-         //   ChangeLength();
-
             Point newStackPointLocation = new Point(currentPoint.Point.X + PolarToRectangularCoord(Step, currentPoint.Angle).X,
                 currentPoint.Point.Y + PolarToRectangularCoord(Step, currentPoint.Angle).Y);
-
             currentPoint = new LPoint(newStackPointLocation, currentPoint.Angle, Color.Blue);
-            //if (currentPoint.Angle == points[points.Count - 1].Angle)
-            //     currentPoint.Color = Color.DarkBlue;
+
         }
 
         private void Rotate(bool left)

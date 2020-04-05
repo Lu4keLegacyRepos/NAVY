@@ -8,7 +8,7 @@ namespace Pole.QLearning
     {
         public static QAction ToQAction(this QState state)
         {
-            return new QAction(state.Index, state.InRange, state.InAngleRange, state.Direction) { Reward = state.Reward, Qvalue=state.Qvalue };
+            return new QAction(state.Index, state.InRange, state.InAngleRange, state.BetterAngle) { Reward = state.Reward, Qvalue=state.Qvalue };
         }
     }
 }
