@@ -19,6 +19,7 @@ namespace LSystem.Visualize
 
         public L_System(Point startPoint, int step, float angleStep)
         {
+            // pravidla pro vykreslovani
             grammar = new Dictionary<char, Action>()
             {
                 {'F', () => { Forward(); AddPoint(); }},
@@ -58,6 +59,8 @@ namespace LSystem.Visualize
                 currentPoint.Angle += AngleStep;
             }
         }
+
+        // vygenerovaní stringu pro vykresleni o volitelné délce iterací
         public L_System GenerateString(Dictionary<char, string> rules, string axiom, int iterations)
         {
             string result = axiom;
@@ -79,6 +82,7 @@ namespace LSystem.Visualize
             return this;
         }
 
+        // generování bodů k vykreslení z vygenerovaného stringu
         public List<LPoint> Generate()
         {
             foreach (char c in generatedString)
@@ -87,6 +91,7 @@ namespace LSystem.Visualize
             return points;
         }
 
+        // prevod souradnic
         private Point PolarToRectangularCoord(float step, float angle)
         {
             return new Point((int)Math.Round(Math.Cos(angle) * step), (int)Math.Round((Math.Sin(angle) * step)));
