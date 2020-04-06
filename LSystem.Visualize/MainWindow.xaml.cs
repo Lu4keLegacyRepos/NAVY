@@ -11,7 +11,7 @@ namespace LSystem.Visualize
     public partial class MainWindow : Window
     {
         List<LPoint> nodes = new List<LPoint>();
-        LSystem system;
+        L_System system;
 
         Dictionary<char, string> rules = new Dictionary<char, string>()
         {
@@ -42,7 +42,7 @@ namespace LSystem.Visualize
             {
                 {'F', "F+F-F-FF+F+F-F"}
             };
-            system = new LSystem(new System.Drawing.Point((int)(canvas.Width / 2), (int)(canvas.Height / 5)), 1, 90)
+            system = new L_System(new System.Drawing.Point((int)(canvas.Width / 2), (int)(canvas.Height / 5)), 1, 90)
                 .GenerateString(rules, "F+F+F+F", 4);
             nodes = system.Generate();
             for (int i = 0; i < nodes.Count - 1; i++)
@@ -65,7 +65,7 @@ namespace LSystem.Visualize
             {
                 {'F', "F+F--F+F"}
             };
-            system = new LSystem(new System.Drawing.Point((int)(canvas.Width / 2), (int)(canvas.Height / 6)), 15, angle)
+            system = new L_System(new System.Drawing.Point((int)(canvas.Width / 2), (int)(canvas.Height / 6)), 15, angle)
                 .GenerateString(rules, axiom, 3);
             nodes = system.Generate();
             for (int i = 0; i < nodes.Count - 1; i++)
@@ -88,7 +88,7 @@ namespace LSystem.Visualize
             {
                 {'F', "F[+F]F[-F]F"}
             };
-            system = new LSystem(new System.Drawing.Point((int)(canvas.Width / 2), 0), 20, angle)
+            system = new L_System(new System.Drawing.Point((int)(canvas.Width / 2), 0), 20, angle)
                 .GenerateString(rules, axiom, 5);
             nodes = system.Generate();
             for (int i = 0; i < nodes.Count - 1; i++)
@@ -111,7 +111,7 @@ namespace LSystem.Visualize
             {
                 {'F', "FF+[+F-F-F]-[-F+F+F]"}
             };
-            system = new LSystem(new System.Drawing.Point((int)(canvas.Width / 5*3), 0), 12, angle)
+            system = new L_System(new System.Drawing.Point((int)(canvas.Width / 5*3), 0), 12, angle)
                 .GenerateString(rules, axiom, 4);
             nodes = system.Generate();
             for (int i = 0; i < nodes.Count - 1; i++)

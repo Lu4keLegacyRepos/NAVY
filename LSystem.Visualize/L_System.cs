@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LSystem.Visualize
 {
-    public class LSystem
+    public class L_System
     {
         private string generatedString;
         public Dictionary<char, Action> grammar;
@@ -17,7 +17,7 @@ namespace LSystem.Visualize
         public List<LPoint> points = new List<LPoint>();
         LPoint currentPoint;
 
-        public LSystem(Point startPoint, int step, float angleStep)
+        public L_System(Point startPoint, int step, float angleStep)
         {
             grammar = new Dictionary<char, Action>()
             {
@@ -58,7 +58,7 @@ namespace LSystem.Visualize
                 currentPoint.Angle += AngleStep;
             }
         }
-        public LSystem GenerateString(Dictionary<char, string> rules, string axiom, int iterations)
+        public L_System GenerateString(Dictionary<char, string> rules, string axiom, int iterations)
         {
             string result = axiom;
 
